@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  
+
   def index
     @students = Student.all
   end
@@ -9,9 +9,12 @@ class StudentsController < ApplicationController
   end
 
   def new
+    @student= Student.new
   end
 
   def create
+    @student = Student.create(params.permit(:first_name, :last_name))
+    redirect_to @student
   end
 
 end
